@@ -1,0 +1,61 @@
+Lecture 1 – React Basics (Namaste React)
+
+
+✅ What is React? Why is it called ‘React’?
+React is a JavaScript Library used for building user interfaces, especially for single-page applications.
+The name ‘React’ was chosen because it enables developers to "react" to changes in application state and data, and automatically update the User Interface (UI) in a declarative and efficient way.
+
+
+✅ What is a Library?
+A Library is a collection of pre-written code snippets that can be reused to perform specific tasks.
+Libraries can be plugged into your code as needed.
+They help in faster development and reduce the chances of errors.
+🧩 Examples: React, jQuery
+
+
+✅ What is a Framework?
+A Framework provides a structured foundation for building applications or websites.
+It dictates how you should structure your code.
+Offers more rigid rules and workflows.
+🧩 Examples: Angular, Vue
+
+
+
+✅ Similarities between Library and Framework:
+Both are created by third parties.
+They help solve common problems.
+Both improve productivity and code quality.
+
+
+
+✅ Difference between Library and Framework:
+Feature	Library	Framework
+Control	Developer is in control – calls library functions as needed.	Framework is in control – it calls the developer's code.
+Flexibility	More flexible	Less flexible
+Example	React	Angular
+🎯 Key Point: The difference lies in Inversion of Control.
+
+
+
+✅ What is Emmet?
+Emmet is a toolkit for web developers that expands short expressions into complete HTML/CSS code.
+
+
+
+✅ What is crossorigin in script tag?
+The crossorigin attribute in a script tag enables Cross-Origin Resource Sharing (CORS).
+It allows external scripts (from another domain) to access resources or make HTTP requests securely.
+Important when loading JavaScript files from a different origin (like CDN).
+
+
+
+✅ What does {} mean in JSX?
+In React, curly braces {} are used to embed JavaScript expressions inside JSX.
+Inside React.createElement, {} is used to pass props like id, className, etc.
+📌 Example:
+jsx
+Copy
+Edit
+React.createElement("h1", { id: "title", className: "header" }, "Hello")
+🛑 NOTE: React will overwrite everything inside the root DOM node. Whatever is passed to render() will replace the content inside #root.
+
