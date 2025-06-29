@@ -16,7 +16,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/services" element={<Service />} />
-        <Route path="/restaurants/:ohfiohfi" element={<RestaurantMenu />} />
+        <Route path="/restaurants/:resId" element={<RestaurantMenu />} />
         <Route path="*" element={<Error />} /> {/* This catches unmatched routes */}
       </Routes>
     </BrowserRouter>

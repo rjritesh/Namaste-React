@@ -1,4 +1,5 @@
 // import lists from "../data/Restaurent";
+import { Link } from "react-router-dom";
 import { Main_API } from "../utils/constants";
 import Card from "./Card";
 import Shimmer from "./Shimmer";
@@ -15,7 +16,7 @@ const Homepage = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-     Main_API
+      Main_API
     );
     const json = await data.json();
     let restaurants;
@@ -84,7 +85,9 @@ const Homepage = () => {
           </div>
         ) : (
           filteredRestaurent.map((restaurent) => (
-            <Card key={restaurent.info.id} resData={restaurent}></Card>
+
+            <Link key={restaurent.info.id} to={"/restaurants/" + restaurent.info.id} ><Card resData={restaurent}></Card></Link>
+
           ))
         )}
       </div>

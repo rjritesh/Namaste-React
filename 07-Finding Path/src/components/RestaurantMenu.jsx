@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { CDN_URL2 } from "../utils/constants";
 import { Menu_API } from "../utils/constants";
+import { useParams } from "react-router-dom";
 
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
   const [menu, setMenu] = useState([]);
 
- 
+  const { resId } = useParams()
+
 
   useEffect(() => {
     fetchMenu();
@@ -15,7 +17,7 @@ const RestaurantMenu = () => {
 
   const fetchMenu = async () => {
     const data = await fetch(
-      Menu_API
+      Menu_API + resId
     );
     const json = await data.json();
 
@@ -40,21 +42,22 @@ const RestaurantMenu = () => {
 
   if (!resInfo) return <Shimmer />;
 
-  const { name, cuisines, avgRating, costForTwoMessage } = resInfo;
+  const { name, cuisines, avgRating, costForTwoMessage, locality } = resInfo;
 
   return (
     <div className="restaurant-menu">
       <div className="restaurant-header">
         <h2>{name}</h2>
         <p>{cuisines?.join(", ")}</p>
-        <p>⭐ {avgRating} • {costForTwoMessage}</p>
+        <p>⭐{avgRating} • {costForTwoMessage}</p>
+        <p className="area">{locality}</p>
       </div>
 
       <div className="menu-section">
         {menu.map((category, index) => (
           <div className="category" key={index}>
 
-            <h3>{category?.card?.card?.title}</h3>
+            <h3>{category?.card?.card?.title} ({category?.card?.card?.itemCards?.length})</h3>
             {category?.card?.card?.itemCards?.map((item, i) => {
               const info = item?.card?.info;
               return (

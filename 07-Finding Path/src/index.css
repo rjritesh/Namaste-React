@@ -37,7 +37,7 @@ html, body {
   border-bottom: 1px solid var(--border-color);
   box-shadow: 0 2px 4px var(--shadow);
   flex-wrap: wrap;
-  position: sticky;
+
   top: 0;
   z-index: 999;
 }
@@ -161,6 +161,11 @@ button:hover,
   font-size: 1.2rem;
   font-weight: bold;
   margin-top: 0.8rem;
+  color: black;
+
+}
+a{
+  text-decoration: none;
 }
 
 .resInfo {
@@ -252,6 +257,12 @@ button:hover,
   color: #202020;
   margin-bottom: 0.5rem;
   font-weight: 800;
+}
+
+.area{
+ font-size: small;
+ color: #757575;
+ margin-top: 3px;
 }
 
 .res-meta {
