@@ -4,11 +4,10 @@ import logo from "../assets/logo1.png";
 
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
-  console.log("header rendered");
+
 
   useEffect(() => {
 
-    console.log("useeffect rendered")
   }, [btnNameReact])
 
   return (
