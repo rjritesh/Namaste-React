@@ -1,0 +1,472 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+/* -------- 🎨 Theme Variables (Swiggy Colors) -------- */
+:root {
+  --primary-color: #fc8019;         /* Swiggy orange */
+  --primary-hover: #e26c0a;
+  --text-dark: #282c3f;
+  --text-light: #686b78;
+  --bg-color: #f5f5f5;
+  --card-bg: #ffffff;
+  --border-color: #e9e9eb;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
+/* -------- 🧼 Reset -------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Manrope", sans-serif;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+}
+
+/* -------- 🔝 Navbar -------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 4px var(--shadow);
+  flex-wrap: wrap;
+
+  top: 0;
+  z-index: 999;
+}
+
+.logo img {
+  width: 60px;
+}
+
+.navItems {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.navItems a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.navItems a:hover {
+  color: var(--primary-color);
+}
+
+/* -------- 📦 Main Container -------- */
+.container {
+  padding: 2rem 0rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-height: 100vh;
+}
+
+/* -------- 🔍 Input Field -------- */
+.inputField {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+
+}
+
+.inputField input {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  width: 250px;
+  max-width: 80vw;
+  border-radius: 5px;
+  border: 1px solid gray;
+  outline: none;
+}
+
+/* -------- 🔘 Buttons -------- */
+button,
+.searchBtn button,
+.filter-btn,
+.loginBtn,
+.error-button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+button:hover,
+.searchBtn button:hover,
+.loginBtn:hover,
+.error-button:hover {
+  background-color: var(--primary-hover);
+}
+
+.filter-btn {
+  background-color: #f1f1f1;
+  color: #222;
+}
+
+.filter-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* -------- 🧾 Cards -------- */
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.card {
+  
+  padding: 1.3rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: transform 0.3s ease;
+  width: 300px;
+  max-width: 80vw;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+.cardImg img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.resName {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 0.8rem;
+  color: black;
+
+}
+a{
+  text-decoration: none;
+}
+
+.resInfo {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: var(--text-light);
+}
+
+.menus,
+.location {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.location {
+  margin-top: 0.7rem;
+}
+
+/* -------- ❌ Error Page -------- */
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.error-box {
+  background-color: var(--card-bg);
+  padding: 40px 30px;
+  max-width: 500px;
+  width: 100%;
+
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px var(--shadow);
+}
+
+.error-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.error-title {
+  font-size: 32px;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.error-message {
+  font-size: 16px;
+  color: var(--text-light);
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+/* -------- 💡 Error Message Fallback -------- */
+.errorMsg {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  max-width: 60%;
+ 
+  color: var(--primary-color);
+}
+/* RestaurantMenu.css */
+
+.restaurant-menu {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+  word-wrap: break-word;
+  font-family: 'Manrope', sans-serif;
+}
+
+.restaurant-header {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 0 10px rgba(100, 100, 100, 0.2);
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.res-name {
+  font-size: 1.8rem;
+  color: #202020;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.area{
+ font-size: small;
+ color: #757575;
+ margin-top: 3px;
+}
+
+.res-meta {
+  color: #757575;
+  font-size: 1rem;
+}
+
+.res-info {
+  font-weight: bold;
+  color: #333;
+  margin-top: 0.4rem;
+}
+
+.menu-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.category h3 {
+  font-size: 1.2rem;
+  color: #ff6f00;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1rem;
+  background-color: #fffdfc;
+  border: 1px solid #f1f1f1;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: 0.2s;
+}
+.menu-item img{
+  width: 180px;
+  border-radius: 8px;
+  margin-right: 1rem;
+}
+
+.menu-item:hover {
+  transform: translateY(-2px);
+}
+
+.item-details {
+  max-width: 70%;
+}
+
+.item-details h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.item-desc {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 0.4rem;
+}
+
+.item-price {
+  font-weight: 600;
+  color: #333;
+}
+
+.item-action {
+  display: flex;
+  align-items: center;
+}
+
+.add-btn {
+  background-color: #ff6f00;
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.add-btn:hover {
+  background-color: #e65c00;
+}
+
+/* -------- 💫 Shimmer UI -------- */
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.shimmer-card {
+  width: 250px;
+  height: 300px;
+  padding: 10px;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+.shimmer-image {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #eeeeee 25%, #dddddd 50%, #eeeeee 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.shimmer-line {
+  height: 12px;
+  margin-top: 10px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #eeeeee 25%, #dddddd 50%, #eeeeee 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.short { width: 60%; }
+.medium { width: 80%; }
+.long { width: 90%; }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* -------- 📱 Responsive -------- */
+@media (max-width: 750px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .navItems {
+    flex-direction: row;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+  }
+
+  .logo img {
+    width: 100px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .inputField {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .searchBtn {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .searchBtn input,
+  .searchBtn button,
+  .filter-btn {
+    width: 100%;
+  }
+
+  .cardContainer {
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .card {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  .cardImg img {
+    height: 140px;
+  }
+
+  .resName {
+    font-size: 1rem;
+  }
+
+  .resInfo {
+    font-size: 0.8rem;
+  }
+
+  .menus,
+  .location {
+    font-size: 0.75rem;
+  }
+}
