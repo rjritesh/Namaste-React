@@ -4,6 +4,8 @@ import { Main_API } from "../utils/constants";
 import Card from "./Card";
 import Shimmer from "./Shimmer";
 import { useEffect, useState } from "react";
+import useOnlineStatus from "../utils/useOnlineStatus";
+
 
 const Homepage = () => {
   const [listOfRestaurent, setListOfRestaurent] = useState([]);
@@ -33,6 +35,10 @@ const Homepage = () => {
     setFilteredRestaurent(restaurants);
   };
 
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false) return <h1>Offline....</h1>
+
+
   return listOfRestaurent.length === 0 ? (
     <Shimmer></Shimmer>
   ) : (
@@ -49,6 +55,7 @@ const Homepage = () => {
         >
           Top Restaurents
         </button>
+        
         <div className="searchBtn">
           <input
             type="text"

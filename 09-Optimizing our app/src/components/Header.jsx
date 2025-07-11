@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo1.png";
+import OnlineOffline from "./onlineOffline";
 
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
@@ -17,8 +18,9 @@ const Header = () => {
 
         <Link to="/"><img src={logo} alt="Logo" /></Link>
       </div>
-
+     
       <div className="navItems">
+         <OnlineOffline></OnlineOffline>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/services">Services</Link>
