@@ -35,10 +35,9 @@ const Homepage = () => {
     setFilteredRestaurent(restaurants);
   };
 
-  const onlineStatus = useOnlineStatus();
-  if (onlineStatus === false) return <h1>Offline....</h1>
-
-
+const  onlineStatus = useOnlineStatus();
+if(onlineStatus === false) return <h1>Looks like you are offline!!!!</h1>
+ 
   return listOfRestaurent.length === 0 ? (
     <Shimmer></Shimmer>
   ) : (

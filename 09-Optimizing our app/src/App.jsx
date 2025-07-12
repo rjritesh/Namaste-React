@@ -5,7 +5,10 @@ import Contact from "./components/Contact";
 import Homepage from "./components/Homepage";
 import Service from "./components/Service";
 import Error from "./components/Error";
-import RestaurantMenu from "./components/RestaurantMenu";
+import { lazy, Suspense } from "react";
+
+const RestaurantMenu = lazy(() => import("./components/RestaurantMenu"))
+
 
 const App = () => {
   return (
@@ -16,7 +19,14 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/services" element={<Service />} />
-        <Route path="/restaurants/:resId" element={<RestaurantMenu />} />
+        <Route
+          path="/restaurants/:resId"
+          element={
+            <Suspense fallback={<h2>Loading menu...</h2>}>
+              <RestaurantMenu />
+            </Suspense>
+          }
+        />
         <Route path="*" element={<Error />} /> {/* This catches unmatched routes */}
       </Routes>
     </BrowserRouter>
