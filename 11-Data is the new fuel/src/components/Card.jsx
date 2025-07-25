@@ -12,7 +12,7 @@ const Card = ({ resData }) => {
   } = resData.info;
 
   return (
-    <div className="w-70 max-w-[90vw]  rounded-xl    hover:shadow-lg hover:-translate-y-1 transition-all duration-200 overflow-hidden cursor-pointer">
+    <div className="w-70 max-w-[90vw]  rounded-xl hover:shadow-lg hover:-translate-y-1 transition-all duration-200 overflow-hidden cursor-pointer relative ">
 
       <img
         src={CDN_URL + cloudinaryImageId}
@@ -43,18 +43,15 @@ const Card = ({ resData }) => {
 export const promotedRestaurent = (Card) => {
   return (props) => {
     return (
-
-      <div>
-        <label className=" absolute inline-flex items-center gap-1 px-3 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full m-2">
+      <div className="relative w-70 max-w-[90vw] rounded-xl hover:-translate-y-1 transition-all duration-200 cursor-pointer">
+        <label className="absolute inline-flex items-center gap-1 px-3 py-1 text-sm font-medium text-green-800 bg-green-100 rounded-full m-2 z-10">
           <span className="w-2 h-2 bg-green-500 rounded-full"></span>
           Veg
         </label>
-
-        <Card {...props}></Card>
+        <Card {...props} />
       </div>
-
-    )
-  }
-}
+    );
+  };
+};
 
 export default Card;

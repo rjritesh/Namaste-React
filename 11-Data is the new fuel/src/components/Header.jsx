@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.jpeg";
-import OnlineOffline from "./onlineOffline";
 
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
 
-  useEffect(() => {}, [btnNameReact]);
+  useEffect(() => { }, [btnNameReact]);
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white shadow-md">
@@ -23,8 +22,8 @@ const Header = () => {
         </div>
 
         {/* NAV LINKS */}
-        <nav className="flex items-center gap-3 sm:gap-5 text-sm sm:text-base font-medium text-gray-700">
-          <OnlineOffline />
+        <nav className="flex items-center gap-15 sm:gap-7 text-2xl sm:text-base font-semibold text-gray-700">
+
           <Link to="/" className="hover:text-orange-500 transition">
             Home
           </Link>
@@ -32,7 +31,7 @@ const Header = () => {
             About
           </Link>
           <Link to="/services" className="hover:text-orange-500 transition">
-            Services
+            Help
           </Link>
           <Link to="/contact" className="hover:text-orange-500 transition">
             Contact

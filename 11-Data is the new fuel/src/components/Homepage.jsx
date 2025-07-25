@@ -3,13 +3,12 @@ import { Main_API } from "../utils/constants";
 import Card, { promotedRestaurent } from "./Card";
 import Shimmer from "./Shimmer";
 import { useEffect, useState } from "react";
-import useOnlineStatus from "../utils/useOnlineStatus";
+import SearchButton from "./SearchButton";
+
 
 const Homepage = () => {
   const [listOfRestaurent, setListOfRestaurent] = useState([]);
   const [filteredRestaurent, setFilteredRestaurent] = useState([]);
-  const [searchText, setSearchText] = useState("");
-
 
   const RestaurentCardWithPromoted = promotedRestaurent(Card)
 
@@ -35,8 +34,6 @@ const Homepage = () => {
     setFilteredRestaurent(restaurants);
   };
 
-  const onlineStatus = useOnlineStatus();
-  if (onlineStatus === false) return <h1>Looks like you are offline!!!!</h1>;
 
   return listOfRestaurent.length === 0 ? (
     <Shimmer />
@@ -44,43 +41,10 @@ const Homepage = () => {
     <div className="min-h-screen px-4 py-8 flex flex-col gap-8 bg-gray-50">
       {/* 🔍 Search & Filter */}
       <div className="flex flex-wrap justify-around items-center gap-4">
-        <button
-          className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-md font-semibold"
-          onClick={() => {
-            const topRated = listOfRestaurent.filter(
-              (res) => parseFloat(res?.info?.avgRating) > 4
-            );
-            setListOfRestaurent(topRated);
-          }}
-        >
-          Top Restaurants
-        </button>
+
 
         <div className="flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto">
-          <input
-            type="text"
-            placeholder="Search Foods and Restaurants"
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            className="border border-gray-300 px-4 py-2 rounded-md w-full sm:w-64 focus:outline-none"
-          />
-          <button
-            onClick={() => {
-              const filteredRes = listOfRestaurent.filter((res) =>
-                res?.info?.name
-                  ?.toLowerCase()
-                  .includes(searchText.toLowerCase()) ||
-                res?.info?.cuisines
-                  .join(", ")
-                  ?.toLowerCase()
-                  .includes(searchText.toLowerCase())
-              );
-              setFilteredRestaurent(filteredRes);
-            }}
-            className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md font-semibold transition"
-          >
-            Search
-          </button>
+          <SearchButton></SearchButton>
         </div>
       </div>
 
