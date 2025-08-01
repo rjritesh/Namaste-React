@@ -47,9 +47,11 @@ if(onlineStatus === false) return <h1>Looks like you are offline!!!!</h1>
           className="filter-btn"
           onClick={() => {
             const filteredList = listOfRestaurent.filter(
-              (res) => res?.info?.avgRating > 4
+              (res) => res?.info?.avgRating > 4.5
             );
-            setListOfRestaurent(filteredList);
+            // setListOfRestaurent(filteredList);
+            setFilteredRestaurent(filteredList);
+
           }}
         >
           Top Restaurents
