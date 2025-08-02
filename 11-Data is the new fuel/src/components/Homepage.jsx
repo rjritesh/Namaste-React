@@ -44,7 +44,11 @@ const Homepage = () => {
 
 
         <div className="flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto">
-          <SearchButton></SearchButton>
+          <SearchButton
+            listOfRestaurent={listOfRestaurent}
+            setFilteredRestaurent={setFilteredRestaurent}
+          />
+
         </div>
       </div>
 

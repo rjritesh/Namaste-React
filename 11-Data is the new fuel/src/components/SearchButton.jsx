@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-const SearchButton = () => {
+const SearchButton = ({listOfRestaurent, setFilteredRestaurent}) => {
 
   const [searchText, setSearchText] = useState("");
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Shimmer from "./Shimmer";
+import ShimmerMenu from "./ShimmerMenu";
 import { CDN_URL2 } from "../utils/constants";
 import { useParams } from "react-router-dom";
 import useRestaurentMenu from "../utils/useRestaurentMenu";
@@ -10,7 +10,7 @@ const RestaurantMenu = () => {
   const { resInfo, menu } = useRestaurentMenu(resId);
   const [openIndex, setOpenIndex] = useState(null);
 
-  if (!resInfo) return <Shimmer />;
+  if (!resInfo) return <ShimmerMenu></ShimmerMenu>
 
   const toggleAccordion = (index) => {
     setOpenIndex((prevIndex) => (prevIndex === index ? null : index));

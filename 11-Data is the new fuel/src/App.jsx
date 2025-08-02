@@ -6,10 +6,10 @@ import Homepage from "./components/Homepage";
 import Service from "./components/Service";
 import Error from "./components/Error";
 import { lazy, Suspense } from "react";
+import ShimmerMenu from "./components/ShimmerMenu";
+// import ShimmerMenu from "./components/ShimmerMenu";
 
 const RestaurantMenu = lazy(() => import("./components/RestaurantMenu"))
-
-
 const App = () => {
   return (
     <BrowserRouter>
@@ -22,7 +22,7 @@ const App = () => {
         <Route
           path="/restaurants/:resId"
           element={
-            <Suspense fallback={<h2>Loading menu...</h2>}>
+            <Suspense fallback={<ShimmerMenu></ShimmerMenu>}>
               <RestaurantMenu />
             </Suspense>
           }
