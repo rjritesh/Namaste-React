@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ShimmerMenu from "./ShimmerMenu";
+import { ChevronUp, ChevronDown } from 'lucide-react';
 import { CDN_URL2 } from "../utils/constants";
 import { useParams } from "react-router-dom";
 import useRestaurentMenu from "../utils/useRestaurentMenu";
@@ -36,7 +37,7 @@ const RestaurantMenu = () => {
                 aria-expanded={openIndex === index}
               >
                 <span>{title} ({items.length})</span>
-                <span className="text-xl">{openIndex === index ? "▲" : "▼"}</span>
+                <span className="text-xl">{openIndex === index ? <ChevronUp /> : <ChevronDown />}</span>
               </button>
 
               {/* Accordion Body */}

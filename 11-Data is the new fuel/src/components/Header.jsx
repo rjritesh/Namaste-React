@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { ShoppingCart } from 'lucide-react';
 import logo from "../assets/logo.jpeg";
 
 const Header = () => {
@@ -35,6 +36,9 @@ const Header = () => {
           </Link>
           <Link to="/contact" className="hover:text-orange-500 transition">
             Contact
+          </Link>
+          <Link to="/cart" className="hover:text-orange-500 transition">
+            <ShoppingCart />
           </Link>
           <button
             onClick={() =>
