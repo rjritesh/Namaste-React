@@ -64,7 +64,7 @@ const Homepage = () => {
               key={restaurent.info.id}
               to={"/restaurants/" + restaurent.info.id}
             >
-              {restaurent.info.veg ? <RestaurentCardWithPromoted resData={restaurent}></RestaurentCardWithPromoted > : <Card resData={restaurent} />}
+              {restaurent.info.veg ? <RestaurentCardWithPromoted resData={restaurent} /> : <Card resData={restaurent} />}
             </Link>
           ))
         )}

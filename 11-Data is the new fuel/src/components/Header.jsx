@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart } from 'lucide-react';
 import logo from "../assets/logo.jpeg";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
 
   useEffect(() => { }, [btnNameReact]);
+
+  const { loggedInUser } = useContext(UserContext)
+
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white shadow-md">
@@ -40,6 +44,7 @@ const Header = () => {
           <Link to="/cart" className="hover:text-orange-500 transition">
             <ShoppingCart />
           </Link>
+          User: {loggedInUser}
           <button
             onClick={() =>
               setBtnNameReact(btnNameReact === "Login" ? "Logout" : "Login")

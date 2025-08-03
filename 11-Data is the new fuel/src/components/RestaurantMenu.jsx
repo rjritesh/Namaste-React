@@ -9,7 +9,7 @@ import ResMenuHeader from "./ResMenuHeader";
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const { resInfo, menu } = useRestaurentMenu(resId);
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState(0);
 
   if (!resInfo) return <ShimmerMenu></ShimmerMenu>
 
