@@ -6,3 +6,9 @@
 * {
   font-family: 'Inter', sans-serif;
 }
+
+
+body {
+  overflow-y: scroll;
+}
+

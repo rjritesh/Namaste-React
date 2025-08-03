@@ -2,7 +2,7 @@
 
 const About = () => {
   return (
-    <div>About</div>
+      <div className="min-h-screen px-4 py-8">About</div>
   )
 }
 

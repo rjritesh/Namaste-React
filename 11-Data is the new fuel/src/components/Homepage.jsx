@@ -53,7 +53,7 @@ const Homepage = () => {
       </div>
 
       {/* 📦 Restaurant Cards */}
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="flex flex-wrap justify-center gap-10">
         {filteredRestaurent.length === 0 ? (
           <div className="text-center text-orange-500 font-bold text-xl">
             404 Taste Not Found! 😵‍💫🍽️
