@@ -44,7 +44,7 @@ const Header = () => {
           <Link to="/cart" className="hover:text-orange-500 transition">
             <ShoppingCart />
           </Link>
-          User: {loggedInUser}
+
           <button
             onClick={() =>
               setBtnNameReact(btnNameReact === "Login" ? "Logout" : "Login")
@@ -53,6 +53,8 @@ const Header = () => {
           >
             {btnNameReact}
           </button>
+
+          User: {loggedInUser}
         </nav>
       </div>
     </header>
