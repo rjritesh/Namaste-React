@@ -1,4 +1,6 @@
+
 import { CDN_URL } from "../utils/constants";
+
 
 const Card = ({ resData }) => {
   const {
@@ -10,7 +12,7 @@ const Card = ({ resData }) => {
     cloudinaryImageId,
     areaName,
   } = resData.info;
-
+ 
   return (
     <div className="w-70 max-w-[90vw]  rounded-xl hover:shadow-lg hover:-translate-y-1 transition-all duration-200 overflow-hidden cursor-pointer relative ">
 
@@ -31,6 +33,7 @@ const Card = ({ resData }) => {
         </div>
 
         <p className="text-sm text-gray-600 truncate">{cuisines.join(", ")}</p>
+   
         <p className="text-xs text-gray-500 mt-2">{`${locality}, ${areaName}`}</p>
       </div>
     </div>
@@ -43,7 +46,7 @@ const Card = ({ resData }) => {
 export const promotedRestaurent = (Card) => {
   return (props) => {
     return (
-      <div className="relative w-70 max-w-[90vw] rounded-xl hover:-translate-y-1 transition-all duration-200 cursor-pointer shadow-md bg-white">
+      <div className="relative w-70 max-w-[90vw] rounded-xl hover:-translate-y-1 transition-all duration-200 cursor-pointe">
         {/* Veg Label */}
         <div className="absolute top-2 left-2 z-10 inline-flex items-center gap-1 px-3 py-1 text-xs font-semibold text-green-800 bg-green-100 rounded-full shadow-sm">
           <span className="w-2 h-2 bg-green-500 rounded-full"></span>

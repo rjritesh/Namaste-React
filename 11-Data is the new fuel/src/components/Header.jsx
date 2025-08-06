@@ -4,6 +4,7 @@ import { ShoppingCart } from 'lucide-react';
 import logo from "../assets/logo.jpeg";
 import UserContext from "../utils/UserContext";
 
+
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
 
@@ -44,7 +45,7 @@ const Header = () => {
           <Link to="/cart" className="hover:text-orange-500 transition">
             <ShoppingCart />
           </Link>
-
+          {loggedInUser}
           <button
             onClick={() =>
               setBtnNameReact(btnNameReact === "Login" ? "Logout" : "Login")
@@ -54,7 +55,6 @@ const Header = () => {
             {btnNameReact}
           </button>
 
-          User: {loggedInUser}
         </nav>
       </div>
     </header>
