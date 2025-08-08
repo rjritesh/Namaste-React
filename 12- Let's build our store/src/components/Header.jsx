@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ShoppingCart } from 'lucide-react';
 import logo from "../assets/logo.jpeg";
 import UserContext from "../utils/UserContext";
-
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
@@ -12,6 +12,7 @@ const Header = () => {
 
   const { loggedInUser } = useContext(UserContext)
 
+  const cartItems = useSelector((store) => store.cart.items)
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white shadow-md">
@@ -42,8 +43,10 @@ const Header = () => {
           <Link to="/contact" className="hover:text-orange-500 transition">
             Contact
           </Link>
-          <Link to="/cart" className="hover:text-orange-500 transition">
+          <Link to="/cartPage" className="hover:text-orange-500 transition flex">
+
             <ShoppingCart />
+            {cartItems.length}
           </Link>
           {loggedInUser}
           <button

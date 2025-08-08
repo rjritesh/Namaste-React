@@ -5,11 +5,17 @@ import { CDN_URL2 } from "../utils/constants";
 import { useParams } from "react-router-dom";
 import useRestaurentMenu from "../utils/useRestaurentMenu";
 import ResMenuHeader from "./ResMenuHeader";
+import { useDispatch } from "react-redux"
+import { addItem} from "../utils/cartSlice"
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const { resInfo, menu } = useRestaurentMenu(resId);
   const [openIndex, setOpenIndex] = useState(0);
+
+
+  const dispatch = useDispatch()
+
 
   if (!resInfo) return <ShimmerMenu></ShimmerMenu>
 
@@ -74,7 +80,13 @@ const RestaurantMenu = () => {
                             )}
                           </div>
                           <div className="mt-4">
-                            <button className="px-4 py-1 bg-white border border-orange-500 text-orange-500 rounded-md text-sm font-semibold hover:bg-orange-50 transition">
+                            <button className="px-4 py-1 bg-white border border-orange-500 text-orange-500 rounded-md text-sm font-semibold hover:bg-orange-50 transition"
+                              onClick={() =>
+
+                                dispatch(addItem(info))
+
+                              }
+                            >
                               ADD +
                             </button>
                           </div>

@@ -9,6 +9,7 @@ import { lazy, Suspense } from "react";
 import ShimmerMenu from "./components/ShimmerMenu";
 import { Provider } from "react-redux"
 import appStore from "./utils/appStore"
+import CartPage from "./components/CartPage";
 const RestaurantMenu = lazy(() => import("./components/RestaurantMenu"))
 const App = () => {
 
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/services" element={<Service />} />
+          <Route path="/cartPage" element={<CartPage />} />
           <Route
             path="/restaurants/:resId"
             element={
