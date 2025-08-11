@@ -46,8 +46,11 @@ const Header = () => {
           <Link to="/cartPage" className="hover:text-orange-500 transition flex">
 
             <ShoppingCart />
-            {cartItems.length}
-          </Link>
+            <span className="border-2 border-gray-400 h-5 w-5 flex justify-center items-center text-xs mx-2">
+                 {cartItems.length}
+            </span>
+         
+          </Link> 
           {loggedInUser}
           <button
             onClick={() =>

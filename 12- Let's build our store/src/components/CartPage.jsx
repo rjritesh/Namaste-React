@@ -59,7 +59,7 @@ const CartPage = () => {
           <div className="mt-4 text-right">
             <button
               onClick={() => dispatch(clearCart())}
-              className="px-5 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition"
+              className="px-5 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition cursor-pointer"
             >
               Clear Cart
             </button>
