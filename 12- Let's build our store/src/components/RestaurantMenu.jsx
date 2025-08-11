@@ -6,7 +6,8 @@ import { useParams } from "react-router-dom";
 import useRestaurentMenu from "../utils/useRestaurentMenu";
 import ResMenuHeader from "./ResMenuHeader";
 import { useDispatch } from "react-redux"
-import { addItem} from "../utils/cartSlice"
+import { addItem } from "../utils/cartSlice"
+import { toast } from "react-toastify";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -81,11 +82,14 @@ const RestaurantMenu = () => {
                           </div>
                           <div className="mt-4">
                             <button className="px-4 py-1 bg-white border border-orange-500 text-orange-500 rounded-md text-sm font-semibold hover:bg-orange-50 transition cursor-pointer"
-                              onClick={() =>
+                              onClick={() => {
 
-                                dispatch(addItem(info))
+                                dispatch(addItem(info));
+                                toast.success(`${info.name} added to cart!`);
 
-                              }
+                              }}
+
+
                             >
                               ADD +
                             </button>
