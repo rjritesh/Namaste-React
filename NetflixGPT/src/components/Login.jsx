@@ -1,18 +1,52 @@
 import { useRef, useState } from 'react'
 import Header from './Header'
 import { FormValidate } from "../utils/Validate"
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 
 const Login = () => {
   const [isSignIn, setisSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null)
 
+// These are creating references to my input elements using React’s useRef hook:
   const email = useRef(null);
   const password = useRef(null);
 
   const handleBtnClick = () => {
     const message = FormValidate(email.current.value, password.current.value);
-    setErrorMessage(message)
+    setErrorMessage(message);
+    if (message) return;
+
+    if (!isSignIn) {
+      createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+        .then((userCredential) => {
+          // Signed up 
+          const user = userCredential.user;
+          console.log(user)
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage)
+          // ..
+        });
+    }
+    else {
+      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          console.log(user)
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage)
+        });
+    }
   }
 
   return (
@@ -37,6 +71,8 @@ const Login = () => {
           placeholder="Email Address" required
           className="p-2 m-2 w-full placeholder-gray-300 border rounded-sm border-gray-300  text-white bg-zinc-900"
         />
+
+        {/* ref={password} is the reference to the input box to find out what we have written in input & that referenc is created by react by using useref */}
         <input
           ref={password}
           type="password"
