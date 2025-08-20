@@ -5,15 +5,18 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "fire
 import { auth } from "../utils/firebase";
 
 
+
 const Login = () => {
   const [isSignIn, setisSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null)
 
-// These are creating references to my input elements using React’s useRef hook:
   const email = useRef(null);
   const password = useRef(null);
 
+
   const handleBtnClick = () => {
+    //Tum FormValidate function ko email aur password as a input values bhejte ho.
+
     const message = FormValidate(email.current.value, password.current.value);
     setErrorMessage(message);
     if (message) return;
@@ -21,7 +24,7 @@ const Login = () => {
     if (!isSignIn) {
       createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
         .then((userCredential) => {
-          // Signed up 
+          // Signed up form
           const user = userCredential.user;
           console.log(user)
           // ...
@@ -36,10 +39,10 @@ const Login = () => {
     else {
       signInWithEmailAndPassword(auth, email.current.value, password.current.value)
         .then((userCredential) => {
-          // Signed in 
+          // Signed in form
           const user = userCredential.user;
           console.log(user)
-          // ...
+
         })
         .catch((error) => {
           const errorCode = error.code;

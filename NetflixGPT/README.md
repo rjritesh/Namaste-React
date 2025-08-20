@@ -1,12 +1,20 @@
-# React + Vite
+# Form Validation working- 
+- The user enters input.
+- The user clicks "Sign In" or "Sign Up". handleBtnClick is called.
+- Input values are sent to FormValidate.
+- Regex checks the input:
+- If invalid → returns an error message which is displayed.
+- If valid → returns null, and the authentication logic (Firebase) runs.
+- Any error message is shown on the screen if something is wrong.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+# How to get data when user types in an input:
+- Create a state variable using useState.
+- Bind the input’s value to this state variable.
+- Use onChange on the input to update the state whenever the user types.
+###### This is the one approach which is not optimized beacause:
+- State updates trigger re-render
+- You don’t need live updates
+###### The other way is to use useRef:
+- useRef avoids re-render
+- It gives faster performance
