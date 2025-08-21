@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { AlertCircle } from "lucide-react"; // nice icon
+import { AlertCircle } from "lucide-react";
 
 const ErrorPage = () => {
   const navigate = useNavigate();

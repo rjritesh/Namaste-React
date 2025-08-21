@@ -1,9 +1,10 @@
 import { useRef, useState } from 'react'
 import Header from './Header'
 import { FormValidate } from "../utils/Validate"
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 
 
@@ -14,6 +15,7 @@ const Login = () => {
 
   const email = useRef(null);
   const password = useRef(null);
+  const name = useRef(null);
 
 
   const handleBtnClick = () => {
@@ -27,13 +29,25 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up form
           const user = userCredential.user;
-          console.log(user)
-          navigate("/browse")
+
+
+          updateProfile(user, {
+            displayName: name.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
+          }).then(() => {
+            // Profile updated!
+            // ...
+            toast.success("Signed up successfully!", { duration: 2000 });
+            navigate("/browse")
+          }).catch((error) => {
+            setErrorMessage(error.message)
+          });
+
+
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorCode + "-" + errorMessage)
+          toast.error("Invalid credentials!", { duration: 2000 });
           // ..
         });
     }
@@ -42,13 +56,13 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in form
           const user = userCredential.user;
-          console.log(user)
+          toast.success("Logged in successfully!", { duration: 2000 });
           navigate("/browse")
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorCode + "-" + errorMessage)
+          toast.error("Invalid credentials!", { duration: 2000 });
         });
     }
   }
@@ -68,7 +82,7 @@ const Login = () => {
       {/* Login form */}
       <form onSubmit={(e) => e.preventDefault()} className="absolute p-12 bg-black w-3/12 my-36 mx-auto right-0 left-0 opacity-90 flex flex-col items-center rounded-sm">
         <h1 className='text-white font-bold text-4xl mb-8 items-end self-start'>{isSignIn ? "Sign In" : "Sign Up"}</h1>
-        {!isSignIn && (<input type='text' required placeholder='Name' className="p-2 m-2 w-full placeholder-gray-300 border rounded-sm border-gray-300  text-white bg-zinc-900"></input>)}
+        {!isSignIn && (<input type='text' ref={name} required placeholder='Name' className="p-2 m-2 w-full placeholder-gray-300 border rounded-sm border-gray-300  text-white bg-zinc-900"></input>)}
         <input
           ref={email}
           type="text"
