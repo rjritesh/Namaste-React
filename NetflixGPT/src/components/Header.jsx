@@ -10,7 +10,7 @@ const Header = () => {
     signOut(auth).then(() => {
       navigate("/")
     }).catch((error) => {
-      // An error happened.
+      navigate("/error")
     });
   }
 

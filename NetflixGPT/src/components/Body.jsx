@@ -6,6 +6,7 @@ import { addUser, removeUser } from "../utils/userSlice";
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import Login from "./Login";
+import ErrorPage from "./ErrorPage";
 const Body = () => {
   const dispatch = useDispatch();
 
@@ -30,6 +31,7 @@ const Body = () => {
         <Routes>
           <Route path="/" element={<Login></Login>} />
           <Route path="/browse" element={<Browse />} />
+          <Route path="/error" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
     </>
