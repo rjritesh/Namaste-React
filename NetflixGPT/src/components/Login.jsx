@@ -3,12 +3,14 @@ import Header from './Header'
 import { FormValidate } from "../utils/Validate"
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Login = () => {
   const [isSignIn, setisSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null)
+  const navigate = useNavigate()
 
   const email = useRef(null);
   const password = useRef(null);
@@ -16,7 +18,6 @@ const Login = () => {
 
   const handleBtnClick = () => {
     //Tum FormValidate function ko email aur password as a input values bhejte ho.
-
     const message = FormValidate(email.current.value, password.current.value);
     setErrorMessage(message);
     if (message) return;
@@ -27,7 +28,7 @@ const Login = () => {
           // Signed up form
           const user = userCredential.user;
           console.log(user)
-          // ...
+          navigate("/browse")
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -42,7 +43,7 @@ const Login = () => {
           // Signed in form
           const user = userCredential.user;
           console.log(user)
-
+          navigate("/browse")
         })
         .catch((error) => {
           const errorCode = error.code;

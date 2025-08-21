@@ -1,19 +1,19 @@
 
-import Login from "./components/Login"
-import Browse from "./components/Browse"
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Body from "./components/Body";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore"
+
 
 const App = () => {
   return (
-    <div className='text-white'>
-      <Body></Body>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login></Login>} />
-          <Route path="/browse" element={<Browse />} />
-        </Routes>
-      </BrowserRouter>
+    <div>
+      <Provider store={appStore}>
+       
+          <Body></Body>
+  
+      </Provider>
+
+
 
 
     </div>
