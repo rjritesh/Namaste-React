@@ -9,12 +9,12 @@ const App = () => {
   return (
     <div>
       <Provider store={appStore}>
-       
-          <Body></Body>
-       
+
+        <Body></Body>
+
       </Provider>
 
-<Toaster position="top-center" reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} />
 
 
     </div>

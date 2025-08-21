@@ -1,124 +1,152 @@
-import { useRef, useState } from 'react'
-import Header from './Header'
-import { FormValidate } from "../utils/Validate"
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { useRef, useState } from "react";
+import Header from "./Header";
+import { FormValidate } from "../utils/Validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
-
-
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [isSignIn, setisSignIn] = useState(true);
-  const [errorMessage, setErrorMessage] = useState(null)
-  const navigate = useNavigate()
+  const [errorMessage, setErrorMessage] = useState(null);
+  const navigate = useNavigate();
 
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
 
-
   const handleBtnClick = () => {
-    //Tum FormValidate function ko email aur password as a input values bhejte ho.
     const message = FormValidate(email.current.value, password.current.value);
     setErrorMessage(message);
     if (message) return;
 
     if (!isSignIn) {
-      createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
         .then((userCredential) => {
-          // Signed up form
           const user = userCredential.user;
-
 
           updateProfile(user, {
-            displayName: name.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
-          }).then(() => {
-            // Profile updated!
-            // ...
-            toast.success("Signed up successfully!", { duration: 2000 });
-            navigate("/browse")
-          }).catch((error) => {
-            setErrorMessage(error.message)
-          });
-
-
+            displayName: name.current.value,
+            photoURL: "https://example.com/jane-q-user/profile.jpg",
+          })
+            .then(() => {
+              toast.success("Signed up successfully!", { duration: 2000 });
+              navigate("/browse");
+            })
+            .catch((error) => {
+              setErrorMessage(error.message);
+            });
         })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
+        .catch(() => {
           toast.error("Invalid credentials!", { duration: 2000 });
-          // ..
         });
-    }
-    else {
-      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
-        .then((userCredential) => {
-          // Signed in form
-          const user = userCredential.user;
+    } else {
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then(() => {
           toast.success("Logged in successfully!", { duration: 2000 });
-          navigate("/browse")
+          navigate("/browse");
         })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
+        .catch(() => {
           toast.error("Invalid credentials!", { duration: 2000 });
         });
     }
-  }
+  };
 
   return (
     <div>
       <Header />
 
       {/* Background */}
-      <div className="absolute">
+      <div className="absolute inset-0">
         <img
+          className="h-screen w-screen object-cover"
           src="https://assets.nflxext.com/ffe/siteui/vlv3/258d0f77-2241-4282-b613-8354a7675d1a/web/IN-en-20250721-TRIFECTA-perspective_cadc8408-df6e-4313-a05d-daa9dcac139f_large.jpg"
           alt="bg"
         />
       </div>
 
       {/* Login form */}
-      <form onSubmit={(e) => e.preventDefault()} className="absolute p-12 bg-black w-3/12 my-36 mx-auto right-0 left-0 opacity-90 flex flex-col items-center rounded-sm">
-        <h1 className='text-white font-bold text-4xl mb-8 items-end self-start'>{isSignIn ? "Sign In" : "Sign Up"}</h1>
-        {!isSignIn && (<input type='text' ref={name} required placeholder='Name' className="p-2 m-2 w-full placeholder-gray-300 border rounded-sm border-gray-300  text-white bg-zinc-900"></input>)}
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+        p-8 sm:p-12 bg-black opacity-90 w-11/12 sm:w-8/12 md:w-5/12 lg:w-3/12 
+        flex flex-col items-center rounded-md shadow-lg"
+      >
+        <h1 className="text-white font-bold text-3xl sm:text-4xl mb-6 self-start">
+          {isSignIn ? "Sign In" : "Sign Up"}
+        </h1>
+
+        {!isSignIn && (
+          <input
+            type="text"
+            ref={name}
+            required
+            placeholder="Name"
+            className="p-3 m-2 w-full placeholder-gray-400 border rounded-md 
+            border-gray-600 text-white bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-red-600"
+          />
+        )}
+
         <input
           ref={email}
           type="text"
-          placeholder="Email Address" required
-          className="p-2 m-2 w-full placeholder-gray-300 border rounded-sm border-gray-300  text-white bg-zinc-900"
+          placeholder="Email Address"
+          required
+          className="p-3 m-2 w-full placeholder-gray-400 border rounded-md 
+          border-gray-600 text-white bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-red-600"
         />
 
-        {/* ref={password} is the reference to the input box to find out what we have written in input & that referenc is created by react by using useref */}
         <input
           ref={password}
           type="password"
-          placeholder="Password" required
-          className="p-2 m-2 w-full placeholder-gray-300 border rounded-sm border-gray-300  text-white bg-zinc-900"
+          placeholder="Password"
+          required
+          className="p-3 m-2 w-full placeholder-gray-400 border rounded-md 
+          border-gray-600 text-white bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-red-600"
         />
-        <p className='text-red-500 self-start font-semibold'>{errorMessage}</p>
 
-        <button className="p-3 m-4 bg-red-600 font-bold rounded-sm text-white w-full cursor-pointer hover:bg-red-700" onClick={handleBtnClick} >{isSignIn ? "Sign In" : "Sign Up"}</button>
-        <span className='text-gray-100'>OR</span>
+        <p className="text-red-500 self-start font-semibold">{errorMessage}</p>
 
-        <button className="p-3 m-4 bg-gray-600 font-bold rounded-sm text-white w-full cursor-pointer">Use a Sign-In code</button>
+        <button
+          className="p-3 m-4 bg-red-600 font-bold rounded-md text-white w-full 
+          hover:bg-red-700 transition duration-200 cursor-pointer"
+          onClick={handleBtnClick}
+        >
+          {isSignIn ? "Sign In" : "Sign Up"}
+        </button>
 
-        <p className="self-start text-gray-100">
+        <span className="text-gray-300">OR</span>
+
+        <button
+          className="p-3 m-4 bg-gray-600 font-bold rounded-md text-white w-full hover:bg-gray-700 transition duration-200"
+        >
+          Use a Sign-In code
+        </button>
+
+        <p className="self-start text-gray-300">
           {isSignIn ? "New to Netflix? " : "Already registered?"}
           <span
             className="font-bold cursor-pointer hover:underline"
-            onClick={() =>
-              setisSignIn(!isSignIn)
-            }
+            onClick={() => setisSignIn(!isSignIn)}
           >
             {isSignIn ? " Sign Up Now" : " Sign In"}
           </span>
         </p>
-
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
