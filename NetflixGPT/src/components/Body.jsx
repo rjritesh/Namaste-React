@@ -8,21 +8,11 @@ import { useDispatch } from "react-redux";
 import Login from "./Login";
 import ErrorPage from "./ErrorPage";
 const Body = () => {
-  const dispatch = useDispatch();
+  
 
 
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const { uid, displayName, email } = user;
-        dispatch(addUser({ uid: uid, email: email, displayName: displayName }))
 
-      } else {
-        dispatch(removeUser())
-      }
-    });
-  }, [])
 
 
   return (
