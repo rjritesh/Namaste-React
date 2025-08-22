@@ -13,6 +13,7 @@ import toast from "react-hot-toast";
 const Login = () => {
   const [isSignIn, setisSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate();
 
   const email = useRef(null);
@@ -22,7 +23,10 @@ const Login = () => {
   const handleBtnClick = () => {
     const message = FormValidate(email.current.value, password.current.value);
     setErrorMessage(message);
+
+
     if (message) return;
+    setIsLoading(true);
 
     if (!isSignIn) {
       createUserWithEmailAndPassword(
@@ -42,12 +46,15 @@ const Login = () => {
               navigate("/browse");
             })
             .catch((error) => {
-              setErrorMessage(error.message);
+              setErrorMessage(error.message)
+
             });
         })
         .catch(() => {
-          toast.error("Invalid credentials!", { duration: 2000 });
-        });
+          toast.error("Invalid credentials!", { duration: 2000 })
+
+        })
+        .finally(() => setIsLoading(false))
     } else {
       signInWithEmailAndPassword(
         auth,
@@ -59,8 +66,10 @@ const Login = () => {
           navigate("/browse");
         })
         .catch(() => {
-          toast.error("Invalid credentials!", { duration: 2000 });
-        });
+          toast.error("Invalid credentials!", { duration: 2000 })
+
+        })
+        .finally(() => setIsLoading(false))
     }
   };
 
@@ -119,12 +128,15 @@ const Login = () => {
 
         <p className="text-red-500 self-start font-semibold">{errorMessage}</p>
 
-        <button
+        <button disabled={isLoading}
           className="p-3 m-4 bg-red-600 font-bold rounded-md text-white w-full 
-          hover:bg-red-700 transition duration-200 cursor-pointer"
+          hover:bg-red-700 transition duration-200 cursor-pointer flex justify-center items-center "
           onClick={handleBtnClick}
         >
-          {isSignIn ? "Sign In" : "Sign Up"}
+          {isLoading ? (
+            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin "></div>
+          ) :
+            (isSignIn ? "Sign In" : "Sign Up")}
         </button>
 
         <span className="text-gray-300">OR</span>
