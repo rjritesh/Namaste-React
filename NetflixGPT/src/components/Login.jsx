@@ -30,6 +30,7 @@ const Login = () => {
     setIsLoading(true);
 
     if (!isSignIn) {
+      //Signup flow
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
@@ -57,6 +58,7 @@ const Login = () => {
         })
         .finally(() => setIsLoading(false))
     } else {
+      //signin flow
       signInWithEmailAndPassword(
         auth,
         email.current.value,

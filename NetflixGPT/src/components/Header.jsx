@@ -11,6 +11,7 @@ const Header = () => {
   const dispatch = useDispatch()
   const user = useSelector((store) => store.user);
 
+  // Logout function
   const handleSignout = () => {
     const auth = getAuth();
     signOut(auth)
@@ -23,6 +24,7 @@ const Header = () => {
   };
 
   useEffect(() => {
+    //It’s a Firebase function that keeps watching your app’s authentication state.
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, displayName, email } = user;
