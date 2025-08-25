@@ -24,8 +24,8 @@ const Header = () => {
   };
 
   useEffect(() => {
-    //It’s a Firebase function that keeps watching your app’s authentication state.
-    onAuthStateChanged(auth, (user) => {
+    //It’s a Firebase function(event listener) that keeps watching your app’s authentication state everytime the page loads.
+    const unsubscibe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, displayName, email } = user;
         dispatch(addUser({ uid: uid, email: email, displayName: displayName }))
@@ -36,6 +36,8 @@ const Header = () => {
         navigate("/")
       }
     });
+
+    return () => unsubscibe();
   }, [])
 
   return (

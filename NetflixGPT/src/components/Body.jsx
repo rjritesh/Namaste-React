@@ -5,7 +5,7 @@ import ErrorPage from "./ErrorPage";
 
 
 const Body = () => {
-  
+
 
   return (
     <>
@@ -14,7 +14,7 @@ const Body = () => {
           <Route path="/" element={<Login></Login>} />
           <Route path="/browse" element={<Browse />} />
           <Route path="/error" element={<ErrorPage />} />
-           <Route path="*" element={<ErrorPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
     </>
