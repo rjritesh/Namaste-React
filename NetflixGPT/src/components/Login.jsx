@@ -41,7 +41,7 @@ const Login = () => {
 
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://example.com/jane-q-user/profile.jpg",
+            photoURL: "https://avatars.githubusercontent.com/u/97453505?v=4",
           })
             .then(() => {
               toast.success("Signed up successfully!", { duration: 2000 });
