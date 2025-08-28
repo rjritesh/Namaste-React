@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { addUser, removeUser } from "../utils/userSlice";
 import { auth } from "../utils/firebase";
 import { Logo } from "../utils/constants"
-import { ChevronDown, LogOut, Settings, User } from "lucide-react";
+import { ChevronDown, LogOut, Settings, User, UserRoundPen } from "lucide-react";
 
 const Header = () => {
 
@@ -58,12 +58,13 @@ const Header = () => {
           <div className="flex items-center gap-4 cursor-pointer">
             <div className="flex items-center " onClick={() => setIsPopupOpen(!isPopupOpen)}> <span
               className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center border-2 border-white relative cursor-pointer hover:bg-gray-600"
-              
+
             >
               <User className="w-9 h-9 text-white" />
 
               {isPopupOpen && (
-                <div className="absolute top-14 right-0 w-32 bg-gray-800 text-white rounded-md shadow-lg p-3 flex flex-col z-50">
+                <div className="absolute top-14 right-0 w-32 bg-gray-700 text-white rounded-md shadow-lg p-3 flex flex-col z-50">
+                  <button className="flex justify-center  hover:text-red-500 cursor-pointer gap-2 items-center text-md my-2"><UserRoundPen />Profile</button>
                   <button className="flex justify-center  hover:text-red-500 cursor-pointer gap-2 items-center text-md my-2"> <Settings className="w-6" />Settings</button>
                   <button
                     onClick={handleSignout}
