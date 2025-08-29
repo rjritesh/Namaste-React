@@ -13,7 +13,7 @@ const VideoTitle = ({ title, overview }) => {
       {/* Buttons */}
       <div className="flex gap-4">
         <button className="bg-white text-black px-6 py-3 rounded-lg font-semibold flex justify-center items-center gap-2 text-lg  hover:bg-gray-300 cursor-pointer">
-          <Play /> Play
+          <Play className="text-black fill-black" /> Play
         </button>
         <button className="bg-gray-700 font-semibold flex justify-center items-center gap-2   text-white px-6 py-3 rounded-lg  hover:bg-gray-600 cursor-pointer">
           <Ellipsis /> More Info
