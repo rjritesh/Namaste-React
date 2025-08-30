@@ -1,9 +1,37 @@
-import React from 'react'
+import { Search } from 'lucide-react';
 
-const GptSearch = () => {
+const MovieGPTSearch = () => {
   return (
-    <div>GptSearch</div>
-  )
-}
+    <div className="w-full min-h-screen bg-gradient-to-b from-gray-800 to-black relative">
+   
 
-export default GptSearch
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto p-8">
+        {/* Welcome Text */}
+        <div className="text-center text-white mb-8">
+          <h1 className="text-4xl font-bold">Welcome to MovieGPT</h1>
+          <p className="text-xl mt-2">Search for movies, series, and more...</p>
+        </div>
+
+        {/* Search Bar */}
+        <div className="relative flex items-center bg-zinc-800 rounded-lg shadow-lg mx-auto w-full max-w-xl mb-12">
+          <input
+            type="text"
+            placeholder="Search for a movie..."
+            className="w-full py-4 pl-12 pr-14 text-lg text-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          />
+          <button className="absolute right-2 p-3 bg-zinc-700 text-white rounded-full hover:bg-yellow-700 focus:outline-none">
+            <Search size={24} />
+          </button>
+        </div>
+
+  
+      </div>
+    </div>
+  );
+};
+
+export default MovieGPTSearch;
