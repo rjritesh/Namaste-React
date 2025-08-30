@@ -23,7 +23,7 @@ const MovieGPTSearch = () => {
             placeholder="Search for a movie..."
             className="w-full py-4 pl-12 pr-14 text-lg text-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
           />
-          <button className="absolute right-2 p-3 bg-zinc-700 text-white rounded-full hover:bg-yellow-700 focus:outline-none">
+          <button className="absolute right-2 p-3 text-white  hover:bg-zinc-700 hover:rounded-full cursor-pointer focus:outline-none">
             <Search size={24} />
           </button>
         </div>
