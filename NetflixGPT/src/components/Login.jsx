@@ -107,7 +107,7 @@ const Login = () => {
             required
             placeholder="Name"
             className="p-3 m-2 w-full placeholder-gray-400 border rounded-md 
-            border-gray-600 text-white bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-red-600"
+            border-gray-600 text-white bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-yellow-600"
           />
         )}
 
@@ -117,7 +117,7 @@ const Login = () => {
           placeholder="Email Address"
           required
           className="p-3 m-2 w-full placeholder-gray-400 border rounded-md 
-          border-gray-600 text-white bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-red-600"
+          border-gray-600 text-white bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-yellow-600"
         />
 
         <input
@@ -126,14 +126,14 @@ const Login = () => {
           placeholder="Password"
           required
           className="p-3 m-2 w-full placeholder-gray-400 border rounded-md 
-          border-gray-600 text-white bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-red-600"
+          border-gray-600 text-white bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-yellow-600"
         />
 
-        <p className="text-red-500 self-start font-semibold">{errorMessage}</p>
+        <p className="text-yellow-500 self-start font-semibold">{errorMessage}</p>
 
         <button disabled={isLoading}
-          className="p-3 m-4 bg-red-600 font-bold rounded-md text-white w-full 
-          hover:bg-red-700 transition duration-200 cursor-pointer flex justify-center items-center "
+          className="p-3 m-4 bg-yellow-600 font-bold rounded-md text-white w-full 
+          hover:bg-yellow-700 transition duration-200 cursor-pointer flex justify-center items-center "
           onClick={handleBtnClick}
         >
           {isLoading ? (
@@ -151,7 +151,7 @@ const Login = () => {
         </button>
 
         <p className="self-start text-gray-300">
-          {isSignIn ? "New to Netflix? " : "Already registered?"}
+          {isSignIn ? "New to Netflix? " : "Already registeyellow?"}
           <span
             className="font-bold cursor-pointer hover:underline"
             onClick={() => setisSignIn(!isSignIn)}
