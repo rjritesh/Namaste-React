@@ -153,7 +153,7 @@ const Login = () => {
         </button>
 
         <p className="self-start text-gray-300">
-          {isSignIn ? "New to StreamPilot? " : "Already registered?"}
+          {isSignIn ? "New to Cineo? " : "Already registered?"}
           <span
             className="font-bold cursor-pointer hover:underline"
             onClick={() => setisSignIn(!isSignIn)}
