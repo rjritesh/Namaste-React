@@ -1,9 +1,10 @@
-import { Search } from 'lucide-react';
+
+import GPTsearchBar from './GPTsearchBar';
 
 const MovieGPTSearch = () => {
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-gray-800 to-black relative">
-   
+
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
@@ -17,18 +18,9 @@ const MovieGPTSearch = () => {
         </div>
 
         {/* Search Bar */}
-        <div className="relative flex items-center bg-zinc-800 rounded-lg shadow-lg mx-auto w-full max-w-xl mb-12">
-          <input
-            type="text"
-            placeholder="Search for movie, series and more..."
-            className="w-full py-4 pl-12 pr-14 text-lg text-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
-          />
-          <button className="absolute right-2 p-3 text-white  hover:bg-zinc-700 hover:rounded-full cursor-pointer focus:outline-none">
-            <Search size={24} />
-          </button>
-        </div>
 
-  
+        <GPTsearchBar></GPTsearchBar>
+
       </div>
     </div>
   );

@@ -53,7 +53,7 @@ const Header = () => {
       <div className="flex items-center justify-between px-4 sm:px-8">
         {/* Logo */}
         <img
-          className="w-22 sm:w-30 md:w-38 object-contain mt-5"
+          className="w-20 sm:w-28 md:w-36 object-contain mt-8"
           src={Logo}
           alt="logo"
         />
