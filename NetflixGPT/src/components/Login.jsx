@@ -83,7 +83,7 @@ const Login = () => {
       {/* Background */}
       <div className="absolute inset-0">
         <img
-          className="h-screen w-screen object-cover"
+          className="h-screen w-screen object-cover "
           src={Bg_IMG}
           alt="bg"
         />
@@ -92,9 +92,11 @@ const Login = () => {
       {/* Login form */}
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-        p-8 sm:p-12 bg-black opacity-90 w-11/12 sm:w-8/12 md:w-5/12 lg:w-3/12 
-        flex flex-col items-center rounded-md shadow-lg"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+    p-8 sm:p-12 
+    bg-white/10 backdrop-blur-sm border border-white/20
+    w-11/12 sm:w-8/12 md:w-5/12 lg:w-3/12
+    flex flex-col items-center rounded-md shadow-lg"
       >
         <h1 className="text-white font-bold text-3xl sm:text-4xl mb-6 self-start">
           {isSignIn ? "Sign In" : "Sign Up"}
@@ -106,8 +108,8 @@ const Login = () => {
             ref={name}
             required
             placeholder="Name"
-            className="p-3 m-2 w-full placeholder-gray-400 border rounded-md 
-            border-gray-600 text-white bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-yellow-600"
+            className="p-3 m-2 w-full placeholder-gray-300 border rounded-md 
+        border-gray-400 text-white bg-white/10 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-yellow-600"
           />
         )}
 
@@ -116,8 +118,8 @@ const Login = () => {
           type="text"
           placeholder="Email Address"
           required
-          className="p-3 m-2 w-full placeholder-gray-400 border rounded-md 
-          border-gray-600 text-white bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-yellow-600"
+          className="p-3 m-2 w-full placeholder-gray-300 border rounded-md 
+      border-gray-400 text-white bg-white/10 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-yellow-600"
         />
 
         <input
@@ -125,19 +127,19 @@ const Login = () => {
           type="password"
           placeholder="Password"
           required
-          className="p-3 m-2 w-full placeholder-gray-400 border rounded-md 
-          border-gray-600 text-white bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-yellow-600"
+          className="p-3 m-2 w-full placeholder-gray-300 border rounded-md 
+      border-gray-400 text-white bg-white/10 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-yellow-600"
         />
 
         <p className="text-yellow-500 self-start font-semibold">{errorMessage}</p>
 
         <button disabled={isLoading}
           className="p-3 m-4 bg-yellow-600 font-bold rounded-md text-white w-full 
-          hover:bg-yellow-700 transition duration-200 cursor-pointer flex justify-center items-center "
+      hover:bg-yellow-700 transition duration-200 cursor-pointer flex justify-center items-center "
           onClick={handleBtnClick}
         >
           {isLoading ? (
-            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin "></div>
+            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
           ) :
             (isSignIn ? "Sign In" : "Sign Up")}
         </button>
@@ -151,7 +153,7 @@ const Login = () => {
         </button>
 
         <p className="self-start text-gray-300">
-          {isSignIn ? "New to Netflix? " : "Already registeyellow?"}
+          {isSignIn ? "New to StreamPilot? " : "Already registered?"}
           <span
             className="font-bold cursor-pointer hover:underline"
             onClick={() => setisSignIn(!isSignIn)}
@@ -160,6 +162,7 @@ const Login = () => {
           </span>
         </p>
       </form>
+
     </div>
   );
 };
