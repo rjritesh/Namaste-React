@@ -6,9 +6,11 @@ import { addUser, removeUser } from "../utils/userSlice";
 import { auth } from "../utils/firebase";
 import { toogleGptSearchView } from "../utils/gptSlice"
 import Logo from "/logo2.png"
+import showGptSearch from "../utils/gptSlice"
 import { ChevronDown, LogOut, Settings, User, UserRoundPen } from "lucide-react";
 
 const Header = () => {
+  
 
   const [isPopupOpen, setIsPopupOpen] = useState(false)
   const navigate = useNavigate();
@@ -59,7 +61,7 @@ const Header = () => {
           <div className="flex items-center gap-4 cursor-pointer">
             <button className="bg-purple-600 hover:bg-purple-700 cursor-pointer text-white px-6 py-2 rounded-md flex justify-center items-center gap-1 font-semibold " onClick={() => {
               dispatch(toogleGptSearchView())
-            }}>GPT Search</button>
+            }}>{showGptSearch ? "Homepage" : "GPT Search"}</button>
             <div className="flex items-center " onClick={() => setIsPopupOpen(!isPopupOpen)}>
               <span
                 className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center border-2 border-white relative cursor-pointer hover:bg-gray-600"
