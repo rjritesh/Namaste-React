@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { addUser, removeUser } from "../utils/userSlice";
 import { auth } from "../utils/firebase";
 import { toogleGptSearchView } from "../utils/gptSlice"
-import Logo from "/logo2.png"
+import Logo from "/logo.png"
 import showGptSearch from "../utils/gptSlice"
 import { ChevronDown, LogOut, Settings, User, UserRoundPen } from "lucide-react";
 
@@ -51,7 +51,7 @@ const Header = () => {
       <div className="flex items-center justify-between px-4 sm:px-8">
         {/* Logo */}
         <img
-          className="w-30 sm:w-38 md:w-46 object-contain"
+          className="w-20 sm:w-28 md:w-36 object-contain"
           src={Logo}
           alt="logo"
         />
