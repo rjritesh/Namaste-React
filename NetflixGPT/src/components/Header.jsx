@@ -6,16 +6,18 @@ import { addUser, removeUser } from "../utils/userSlice";
 import { auth } from "../utils/firebase";
 import { toogleGptSearchView } from "../utils/gptSlice"
 import Logo from "/logo.png"
-import showGptSearch from "../utils/gptSlice"
+// import showGptSearch from "../utils/gptSlice"
 import { ChevronDown, LogOut, Settings, User, UserRoundPen } from "lucide-react";
 
 const Header = () => {
-  
+
 
   const [isPopupOpen, setIsPopupOpen] = useState(false)
   const navigate = useNavigate();
   const dispatch = useDispatch()
   const user = useSelector((store) => store.user);
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+
 
   // Logout function
   const handleSignout = () => {
@@ -31,7 +33,7 @@ const Header = () => {
 
   useEffect(() => {
     //It’s a Firebase function(event listener) that keeps watching your app’s authentication state everytime the page loads.
-    const unsubscibe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, displayName, email } = user;
         dispatch(addUser({ uid: uid, email: email, displayName: displayName }))
@@ -43,7 +45,7 @@ const Header = () => {
       }
     });
 
-    return () => unsubscibe();
+    return () => unsubscribe();
   }, [])
 
   return (
@@ -51,7 +53,7 @@ const Header = () => {
       <div className="flex items-center justify-between px-4 sm:px-8">
         {/* Logo */}
         <img
-          className="w-20 sm:w-28 md:w-36 m-8 object-contain"
+          className="w-22 sm:w-30 md:w-38 object-contain mt-5"
           src={Logo}
           alt="logo"
         />
@@ -59,9 +61,9 @@ const Header = () => {
         {/* Logout Button */}
         {user && (
           <div className="flex items-center gap-4 cursor-pointer">
-            <button className="bg-purple-600 hover:bg-purple-700 cursor-pointer text-white px-6 py-2 rounded-md flex justify-center items-center gap-1 font-semibold " onClick={() => {
+            <button className="bg-zinc-600 hover:bg-zinc-700 cursor-pointer text-white px-6 py-2 rounded-md flex justify-center items-center gap-1 font-semibold " onClick={() => {
               dispatch(toogleGptSearchView())
-            }}>{showGptSearch ? "Homepage" : "GPT Search"}</button>
+            }}>{showGptSearch ? "Home" : "CineoAI"}</button>
             <div className="flex items-center " onClick={() => setIsPopupOpen(!isPopupOpen)}>
               <span
                 className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center border-2 border-white relative cursor-pointer hover:bg-gray-600"
