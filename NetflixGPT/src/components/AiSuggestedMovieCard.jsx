@@ -1,20 +1,26 @@
 import { TMDB_Img } from "../utils/constants";
 
-
 const AiSuggestedMovieCard = ({ movie }) => {
+  if (!movie.poster_path) return null;
 
-  if(!movie.poster_path) return null
   return (
-    <div className="bg-zinc-800 rounded-lg shadow-md p-4 w-56 text-center hover:scale-105 transition-transform ">
-      <img
-        src={TMDB_Img + movie.poster_path}
-        alt={movie.title}
-        className="rounded-lg mb-2"
-      />
-      <h3 className="text-white text-lg font-semibold">{movie.title}</h3>
-      <p className="text-gray-400 text-sm line-clamp-2">{movie.overview}</p>
-    </div>
-  );
-}
+  <div className="shadow-md w-40 h-60 cursor-pointer transform hover:scale-105 transition duration-300 overflow-hidden bg-black relative">
+  {/* Poster */}
+  <img
+    src={TMDB_Img + movie.poster_path}
+    alt={movie.title}
+    className="w-full h-full object-cover rounded-lg"
+  />
 
-export default AiSuggestedMovieCard
+  {/* Title overlay */}
+  <div className="absolute bottom-0 w-full bg-black bg-opacity-60 text-center p-1">
+    <h3 className="text-white text-sm font-semibold truncate">
+      {movie.title}
+    </h3>
+  </div>
+</div>
+
+  );
+};
+
+export default AiSuggestedMovieCard;

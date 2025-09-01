@@ -62,12 +62,12 @@ const GPTsearchBar = () => {
 
       </div>
 
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="flex flex-wrap justify-center gap-8 m-10 bg-black">
         {loading ? (<Shimmer></Shimmer>) : (
           movies.map((movie) => (
             <AiSuggestedMovieCard key={movie.id} movie={movie} />
           ))
-  )}
+        )}
 
       </div>
 

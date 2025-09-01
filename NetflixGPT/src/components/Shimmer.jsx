@@ -9,7 +9,7 @@ const Shimmer = () => {
           key={index}
           className="bg-zinc-800 rounded-lg shadow-md p-4 w-56 animate-pulse"
         >
-          <div className="h-72 bg-zinc-700 rounded-lg mb-2"></div>
+          <div className="h-50 bg-zinc-700 rounded-lg mb-2"></div>
           <div className="h-6 bg-zinc-700 rounded mb-2"></div>
           <div className="h-4 bg-zinc-700 rounded"></div>
         </div>
