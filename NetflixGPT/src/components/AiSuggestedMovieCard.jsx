@@ -5,7 +5,7 @@ const AiSuggestedMovieCard = ({ movie }) => {
 
   if(!movie.poster_path) return null
   return (
-    <div className="bg-zinc-800 rounded-lg shadow-md p-4 w-56 text-center hover:scale-105 transition-transform">
+    <div className="bg-zinc-800 rounded-lg shadow-md p-4 w-56 text-center hover:scale-105 transition-transform ">
       <img
         src={TMDB_Img + movie.poster_path}
         alt={movie.title}

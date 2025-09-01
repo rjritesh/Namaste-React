@@ -3,10 +3,13 @@ import { useRef, useState } from 'react';
 import genAI from '../utils/genAi';
 import { API_OPTIONS } from '../utils/constants';
 import AiSuggestedMovieCard from './AiSuggestedMovieCard';
+import Shimmer from './Shimmer';
 
 
 const GPTsearchBar = () => {
   const [movies, setMovies] = useState([])
+  const [loading, setLoading] = useState(false)
+
 
   const searchText = useRef(null);
 
@@ -18,6 +21,8 @@ const GPTsearchBar = () => {
   }
 
   const handleGPTSearchClick = async () => {
+    setLoading(true);
+    setMovies([]);
     const query = searchText.current.value.trim();
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
@@ -38,6 +43,8 @@ const GPTsearchBar = () => {
     const tmdbResults = await Promise.all(promiseArray);
     setMovies(tmdbResults.flat())
 
+    setLoading(false)
+
   }
 
   return (
@@ -56,10 +63,12 @@ const GPTsearchBar = () => {
       </div>
 
       <div className="flex flex-wrap justify-center gap-6">
-      
-        {movies.map((movie) => (
-          <AiSuggestedMovieCard key={movie.id} movie={movie} />
-        ))}
+        {loading ? (<Shimmer></Shimmer>) : (
+          movies.map((movie) => (
+            <AiSuggestedMovieCard key={movie.id} movie={movie} />
+          ))
+  )}
+
       </div>
 
     </div>
