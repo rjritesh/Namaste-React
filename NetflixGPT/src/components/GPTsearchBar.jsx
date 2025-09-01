@@ -1,11 +1,21 @@
-import { Search } from 'lucide-react';
-import { useRef } from 'react';
+import { Database, Search } from 'lucide-react';
+import { useRef, useState } from 'react';
 import genAI from '../utils/genAi';
+import { API_OPTIONS } from '../utils/constants';
+import AiSuggestedMovieCard from './AiSuggestedMovieCard';
 
 
 const GPTsearchBar = () => {
+  const [movies, setMovies] = useState([])
+
   const searchText = useRef(null);
 
+
+  const tmdbSearchMovie = async (movie) => {
+    const searchedMovie = await fetch('https://api.themoviedb.org/3/search/movie?query=' + movie + '&include_adult=false&language=en-US&page=1', API_OPTIONS);
+    const data = await searchedMovie.json();
+    return data.results
+  }
 
   const handleGPTSearchClick = async () => {
     const query = searchText.current.value.trim();
@@ -14,15 +24,19 @@ const GPTsearchBar = () => {
     const prompt = `
         You are a movie recommendation system.
         Based on the user query: "${query}", suggest exactly 6 movies.
-        - Only return the movie names and overview
+        - Only return the movie names 
         - Separate them with commas.
         - Do not add numbering or extra text.
         Example: Don-overview, Sholay-overview, War-overview, Koi Mil Gaya-overview, Dangal-overview, Zindagi Na Milegi Dobara-overview
       `;
 
     const result = await model.generateContent(prompt);
-    const responseText = result.response.text();
-    console.log(responseText);
+    const responseText = result.response.text().split(",");
+
+    const promiseArray = responseText.map((movie) => tmdbSearchMovie(movie))
+
+    const tmdbResults = await Promise.all(promiseArray);
+    setMovies(tmdbResults.flat())
 
   }
 
@@ -38,7 +52,16 @@ const GPTsearchBar = () => {
         <button className="absolute right-2 p-3 text-white  hover:bg-zinc-700 hover:rounded-full cursor-pointer focus:outline-none" onClick={handleGPTSearchClick}>
           <Search size={24} />
         </button>
+
       </div>
+
+      <div className="flex flex-wrap justify-center gap-6">
+      
+        {movies.map((movie) => (
+          <AiSuggestedMovieCard key={movie.id} movie={movie} />
+        ))}
+      </div>
+
     </div>
   )
 }
