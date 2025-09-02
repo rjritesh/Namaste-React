@@ -1,6 +1,6 @@
 const Shimmer = () => {
   // Show 6 shimmer cards
-  const shimmerArray = new Array(6).fill(0);
+  const shimmerArray = new Array(10).fill(0);
 
   return (
     <div className="flex flex-wrap gap-4 justify-center">

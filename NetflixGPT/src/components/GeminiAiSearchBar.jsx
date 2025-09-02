@@ -8,21 +8,22 @@ import GeminiAiSuggestion from './GeminiAiSuggestion';
 
 const GeminiAiSearchBar = () => {
   const [aiSuggestedMovie, setAiSuggestedMovie] = useState([])
+  const [loading, setLoading] = useState(false);
 
 
   const searchText = useRef(null);
 
-
   const tmdbSearchMovie = async (movie) => {
     const searchedMovie = await fetch('https://api.themoviedb.org/3/search/movie?query=' + movie + '&include_adult=false&language=en-US&page=1', API_OPTIONS);
     const data = await searchedMovie.json();
-    
+
     return data.results
   }
 
   const handleGPTSearchClick = async () => {
 
-
+    setLoading(true);
+    setAiSuggestedMovie([]);
     const query = searchText.current.value.trim();
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
@@ -42,6 +43,7 @@ const GeminiAiSearchBar = () => {
 
     const tmdbResults = await Promise.all(promiseArray);
     setAiSuggestedMovie(tmdbResults.flat())
+    setLoading(false);
 
   }
 
@@ -59,7 +61,7 @@ const GeminiAiSearchBar = () => {
         </button>
 
       </div>
-      <GeminiAiSuggestion movies={aiSuggestedMovie}></GeminiAiSuggestion>
+      <GeminiAiSuggestion movies={aiSuggestedMovie}  loading={loading}></GeminiAiSuggestion>
     </div>
   )
 }
