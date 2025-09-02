@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCaszBcORKD9Jo0tNScocAuECQ5Ty5Lh88",
-  authDomain: "netflixgpt-bb901.firebaseapp.com",
-  projectId: "netflixgpt-bb901",
-  storageBucket: "netflixgpt-bb901.firebasestorage.app",
-  messagingSenderId: "288848763271",
-  appId: "1:288848763271:web:59487392068259b8b5db22",
+  apiKey: "AIzaSyAmZm0iaVNXG6L7qhUJ-JbiAVz3yqDAI_8",
+  authDomain: "cineo-d7155.firebaseapp.com",
+  projectId: "cineo-d7155",
+  storageBucket: "cineo-d7155.firebasestorage.app",
+  messagingSenderId: "52272249824",
+  appId: "1:52272249824:web:c04abddf1254d195c1c985",
 };
 
 // Initialize Firebase

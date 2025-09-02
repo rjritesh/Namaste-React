@@ -1,7 +1,7 @@
+import GeminiAiSearchBar from "./GeminiAiSearchBar";
+import GeminiAiSuggestion from "./GeminiAiSuggestion"
 
-import GPTsearchBar from './GPTsearchBar';
-
-const MovieGPTSearch = () => {
+const GeminiAISearchPage = () => {
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-gray-800 to-black relative">
 
@@ -19,11 +19,12 @@ const MovieGPTSearch = () => {
 
         {/* Search Bar */}
 
-        <GPTsearchBar></GPTsearchBar>
+        <GeminiAiSearchBar></GeminiAiSearchBar>
+   
 
       </div>
     </div>
   );
 };
 
-export default MovieGPTSearch;
+export default GeminiAISearchPage;

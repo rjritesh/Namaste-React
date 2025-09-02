@@ -1,14 +1,13 @@
-import { Database, Search } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { useRef, useState } from 'react';
 import genAI from '../utils/genAi';
 import { API_OPTIONS } from '../utils/constants';
-import AiSuggestedMovieCard from './AiSuggestedMovieCard';
-import Shimmer from './Shimmer';
+import GeminiAiSuggestion from './GeminiAiSuggestion';
 
 
-const GPTsearchBar = () => {
-  const [movies, setMovies] = useState([])
-  const [loading, setLoading] = useState(false)
+
+const GeminiAiSearchBar = () => {
+  const [aiSuggestedMovie, setAiSuggestedMovie] = useState([])
 
 
   const searchText = useRef(null);
@@ -17,12 +16,13 @@ const GPTsearchBar = () => {
   const tmdbSearchMovie = async (movie) => {
     const searchedMovie = await fetch('https://api.themoviedb.org/3/search/movie?query=' + movie + '&include_adult=false&language=en-US&page=1', API_OPTIONS);
     const data = await searchedMovie.json();
+    
     return data.results
   }
 
   const handleGPTSearchClick = async () => {
-    setLoading(true);
-    setMovies([]);
+
+
     const query = searchText.current.value.trim();
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
@@ -32,7 +32,7 @@ const GPTsearchBar = () => {
         - Only return the movie names 
         - Separate them with commas.
         - Do not add numbering or extra text.
-        Example: Don-overview, Sholay-overview, War-overview, Koi Mil Gaya-overview, Dangal-overview, Zindagi Na Milegi Dobara-overview
+        Example: Don, Sholay, War, Koi Mil Gaya, Dangal, Zindagi Na Milegi Dobara
       `;
 
     const result = await model.generateContent(prompt);
@@ -41,9 +41,7 @@ const GPTsearchBar = () => {
     const promiseArray = responseText.map((movie) => tmdbSearchMovie(movie))
 
     const tmdbResults = await Promise.all(promiseArray);
-    setMovies(tmdbResults.flat())
-
-    setLoading(false)
+    setAiSuggestedMovie(tmdbResults.flat())
 
   }
 
@@ -61,18 +59,9 @@ const GPTsearchBar = () => {
         </button>
 
       </div>
-
-      <div className="flex flex-wrap justify-center gap-8 m-10 bg-black">
-        {loading ? (<Shimmer></Shimmer>) : (
-          movies.map((movie) => (
-            <AiSuggestedMovieCard key={movie.id} movie={movie} />
-          ))
-        )}
-
-      </div>
-
+      <GeminiAiSuggestion movies={aiSuggestedMovie}></GeminiAiSuggestion>
     </div>
   )
 }
 
-export default GPTsearchBar
+export default GeminiAiSearchBar

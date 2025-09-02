@@ -1,13 +1,12 @@
-
 import { useSelector } from "react-redux";
 import useNowPlayingMovie from "../hooks/useNowPlayingMovie";
 import usePopularMovies from "../hooks/usePopularMovies";
 import useTopRatedMovies from "../hooks/useTopRatedMovies";
 import useUpcomingMovies from "../hooks/useUpcomingMovies";
 import Header from "./Header";
-import GptSearch from "../components/GptSearch"
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
+import GeminiAISearchPage from "./GeminiAISearchPage";
 
 const Browse = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch)
@@ -18,10 +17,10 @@ const Browse = () => {
   return (
     <div>
       <Header></Header>
-      {showGptSearch ? (<GptSearch></GptSearch>) : (<> <MainContainer></MainContainer>
+      {showGptSearch ? (<GeminiAISearchPage></GeminiAISearchPage>) : (<> <MainContainer></MainContainer>
         <SecondaryContainer></SecondaryContainer></>)}
 
-      
+
     </div>
   );
 };
