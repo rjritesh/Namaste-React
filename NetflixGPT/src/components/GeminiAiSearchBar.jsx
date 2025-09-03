@@ -40,6 +40,7 @@ const GeminiAiSearchBar = () => {
     const promiseArray = responseText.map((movie) => tmdbSearchMovie(movie));
     const tmdbResults = await Promise.all(promiseArray);
     setAiSuggestedMovie(tmdbResults.flat());
+      
     setLoading(false);
   };
 
