@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { TMDB_Img } from "../utils/constants";
 import Shimmer from "./Shimmer"; // optional shimmer component
 
 const GeminiAiSuggestion = ({ movies, loading }) => {
+  const navigate = useNavigate()
+
   if (loading) return <Shimmer />; // show loading placeholder
 
   const validMovies = movies?.filter((movie) => movie.poster_path);
@@ -13,7 +16,7 @@ const GeminiAiSuggestion = ({ movies, loading }) => {
       {validMovies.map((movie) => (
         <div
           key={movie.id}
-          className="shadow-md w-32 sm:w-36 md:w-40 h-48 sm:h-52 md:h-60 cursor-pointer transform hover:scale-105 transition duration-300 overflow-hidden bg-black relative rounded-lg"
+          className="shadow-md w-32 sm:w-36 md:w-40 h-48 sm:h-52 md:h-60 cursor-pointer transform hover:scale-105 transition duration-300 overflow-hidden bg-black relative rounded-lg" onClick={() => navigate(`/movie/${movie.id}`, { state: { movie } })}
         >
           <img
             src={TMDB_Img + movie.poster_path}
