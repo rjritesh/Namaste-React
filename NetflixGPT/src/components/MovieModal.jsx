@@ -62,10 +62,10 @@ const MovieModal = () => {
           <button className="bg-white text-black cursor-pointer flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 rounded-md font-semibold hover:bg-gray-200 transition" onClick={() => setShowTrailor(true)}>
             <Play className="w-5 h-5 md:w-6 md:h-6 " /> Play Trailer
           </button>
-          <button className="bg-gray-700 text-white flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 rounded-md font-semibold hover:bg-gray-600 transition">
+          <button disabled className="bg-gray-700 text-white flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 rounded-md font-semibold hover:bg-gray-600 transition disabled:cursor-not-allowed">
             <Plus className="w-5 h-5 md:w-6 md:h-6" /> Add to Watchlist
           </button>
-          <button className="bg-yellow-600 text-white flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 rounded-md font-semibold hover:bg-yellow-700 transition">
+          <button disabled className="bg-yellow-600 text-white flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 rounded-md font-semibold hover:bg-yellow-700 transition disabled:cursor-not-allowed">
             <Heart className="w-5 h-5 md:w-6 md:h-6" /> Favorite
           </button>
         </div>

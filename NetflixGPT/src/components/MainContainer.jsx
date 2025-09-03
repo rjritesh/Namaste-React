@@ -18,7 +18,7 @@ const MainContainer = () => {
 
       {/* Video title overlay */}
       <div className="absolute inset-0 flex items-center justify-start">
-        <VideoTitle title={original_title} overview={overview} />
+        <VideoTitle title={original_title} overview={overview} id={id} />
       </div>
     </div>
   );
