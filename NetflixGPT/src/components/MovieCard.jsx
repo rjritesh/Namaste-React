@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router-dom'
 import { TMDB_Img } from '../utils/constants'
 
-const MovieCard = ({ poster }) => {
+const MovieCard = ({ poster, id }) => {
+  const navigate = useNavigate()
   return (
-    <div
+    <div onClick={() => navigate(`/movie/${id}`)}
       className="
         flex-shrink-0 
         w-28 h-40       /* 📱 small screens */

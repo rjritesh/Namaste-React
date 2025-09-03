@@ -74,15 +74,15 @@ const Header = () => {
 
               {isPopupOpen && (
                 <div className="absolute top-12 right-0 w-36 bg-gray-800 text-white rounded-md shadow-lg p-3 flex flex-col z-50">
-                  <button className="flex justify-start hover:text-red-500 gap-2 items-center text-sm sm:text-base py-1">
+                  <button className="flex justify-start hover:text-yellow-500 gap-2 items-center text-sm sm:text-base py-1">
                     <UserRoundPen /> Profile
                   </button>
-                  <button className="flex justify-start hover:text-red-500 gap-2 items-center text-sm sm:text-base py-1">
+                  <button className="flex justify-start hover:text-yellow-500 gap-2 items-center text-sm sm:text-base py-1">
                     <Settings className="w-5" /> Settings
                   </button>
                   <button
                     onClick={handleSignout}
-                    className="flex justify-start hover:text-red-500 gap-2 items-center text-sm sm:text-base py-1"
+                    className="flex justify-start hover:text-yellow-500 gap-2 items-center text-sm sm:text-base py-1 cursor-pointer"
                   >
                     <LogOut className="w-5" /> Logout
                   </button>

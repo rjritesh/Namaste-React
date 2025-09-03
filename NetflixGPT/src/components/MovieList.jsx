@@ -31,7 +31,7 @@ const MovieList = ({ title, movies }) => {
       >
         {movies?.map((movie) => (
           <div key={movie.id} className="flex-shrink-0">
-            <MovieCard poster={movie.poster_path} title={movie.title} />
+            <MovieCard poster={movie.poster_path} title={movie.title} id={movie.id} />
           </div>
         ))}
       </div>
