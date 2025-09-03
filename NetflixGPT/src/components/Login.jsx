@@ -15,6 +15,8 @@ const Login = () => {
   const [isSignIn, setisSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false)
+  const [testEmail, setTestEmail] = useState("testuser@gmail.com")
+  const [testPassword, setTestPassword] = useState("TestUser@07")
   const navigate = useNavigate();
 
   const email = useRef(null);
@@ -116,19 +118,23 @@ const Login = () => {
         <input
           ref={email}
           type="text"
+          value={testEmail}
           placeholder="Email Address"
           required
           className="p-3 m-2 w-full placeholder-gray-300 border rounded-md 
       border-gray-400 text-white bg-white/10 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-yellow-600"
+          onChange={(e) => setTestEmail(e.target.value)}
         />
 
         <input
           ref={password}
+          value={testPassword}
           type="password"
           placeholder="Password"
           required
           className="p-3 m-2 w-full placeholder-gray-300 border rounded-md 
       border-gray-400 text-white bg-white/10 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-yellow-600"
+          onChange={(e) => setTestPassword(e.target.value)}
         />
 
         <p className="text-yellow-500 self-start font-semibold">{errorMessage}</p>
@@ -162,7 +168,7 @@ const Login = () => {
           </span>
         </p>
       </form>
-   
+
     </div>
   );
 };
