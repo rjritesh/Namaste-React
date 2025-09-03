@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import MovieCard from './MovieCard';
-import useHorizontalScroll from '../hooks/useHorizontalScroll';
+import useHorizontalScroll from '../hooks/useMovieCardScroll';
 
 const MovieList = ({ title, movies }) => {
   const { containerRef, scrollLeft, scrollRight } = useHorizontalScroll(200);
