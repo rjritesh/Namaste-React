@@ -9,4 +9,4 @@ export const API_OPTIONS = {
   },
 };
 
-export const TMDB_Img = "https://image.tmdb.org/t/p/w200/";
+export const TMDB_Img = "https://image.tmdb.org/t/p/w500/";
