@@ -1,98 +1,36 @@
-# ⚛️ Introducing React – Beginner's Guide (Namaste React Notes)
+# REACT JS
 
-This is a beginner-friendly guide to understanding the basics of **React**, along with important concepts like **Library vs Framework**, **CDN**, **CORS**, and more. Perfect for revision or your learning notes from *Namaste React*.
+## Episode 1:
 
----
+### 1. What is React?
 
-## 📌 What is React?
+- React is a **JavaScript library** developed by **Facebook (now Meta)** for building user interfaces.
+- It is **component-based**, which means we can create reusable UI components.
+- It follows a **declarative approach** — we describe what the UI should look like, and React updates it automatically.
+- It is **fast** because of the **Virtual DOM**, and it makes applications easier to build and manage.
 
-**React** is a **JavaScript library** used to build fast, dynamic, and interactive user interfaces, especially for **Single Page Applications (SPAs)**.
+### 2. What is the difference between library and frameworks?
 
-### 🤔 Why is it called “React”?
+- A **library** is a collection of pre-written code or functions that developers can call to solve specific problems. Ex- React, jQuery
+- A **framework** is a complete structure with rules and guidelines where your code fits in to solve a problem. Ex- Angular
+- With a **library**, the developer is in control and decides when to use it.
+- With a **framework**, the framework controls the flow and calls your code when needed.
 
-The name **React** was chosen because it helps developers **react to changes** in state and data, and updates the UI **declaratively and efficiently**.
+### 3. What is CDN?
 
----
+- **CDN** stands for **Content Delivery Network**, a network of servers distributed across the globe.
+- It is used to **deliver website content faster and more efficiently**.
+- The CDN stores **copies of the main server’s content** on servers located near the user.
+- This **reduces loading time, buffering, and server load**, improving the user experience.
 
-## 📚 What is a Library?
+*“A common real-world application of CDN is in **streaming platforms like Netflix, Amazon Prime, and YouTube**, which use it to deliver videos to users **faster and without buffering**.”*
 
-- A **library** is a collection of **prewritten code** that developers can use and reuse for specific tasks.
-- It makes development **faster** and reduces **errors**.
-- Developers are in **full control** — they choose when and how to use the library.
+### 4. CORS
 
-**Examples**: React, jQuery, Lodash
+- CORS stands for Cross Origin Resource Sharing , it is a browser security feature.
+- Its allows your website to access resource from other websites of different origin safely.
 
----
+### 5. What is an Emmet?
 
-## 🧱 What is a Framework?
-
-- A **framework** provides a **ready-made structure** or foundation for building apps.
-- The framework controls the flow and tells developers **where and how to write their code**.
-- Developers have to **follow its rules and patterns**.
-
-**Examples**: Angular, Django, Laravel
-
----
-
-## 🔄 Difference between Library and Framework
-
-- A **library** gives you freedom and control — you call its functions when needed.
-- A **framework** is in control — it calls your code at specific places.
-- A **library is flexible**, you decide the flow.
-- A **framework enforces structure**, you follow its flow.
-- Key concept: **Inversion of Control**
-  - In a library: **You call the library**
-  - In a framework: **The framework calls you**
-
----
-
-## 🤝 Similarities between Library & Framework
-
-- Both are created by third parties to make development easier.
-- Both provide reusable code and solve common problems.
-- Both help improve **performance** and **productivity**.
-
----
-
-## ⚡ Emmet – Shortcut Tool for Web Developers
-
-- **Emmet** allows writing shorthand code which auto-expands into full HTML or CSS.
-- Speeds up writing repetitive code.
-- Supported in VS Code and other code editors.
-## 🌍 What is CDN (Content Delivery Network)?
-
-CDN stands for **Content Delivery Network**.
-
-Think of it like an **Amazon warehouse system**. Just like Amazon stores products in warehouses across different cities to deliver them faster, a **CDN stores website content in servers across the world** to serve users quickly.
-
-### ✅ My Understanding:
-> "CDN is like a warehouse of Amazon. It's a group of servers spread all over the world. These servers store copies of images, icons, videos, etc., and deliver them to users from the nearest server. It is used to make websites faster and reduces load on the main server."
-
-### ✅ Why is CDN Important?
-
-- 🚀 **Faster loading** – content is delivered from the nearest server.
-- 📦 **Reduced load** on the main/origin server.
-- 🌍 **Better global performance** – useful for international users.
-- 📈 **Handles high traffic** easily by load balancing.
-- 🔐 **Improves security** by protecting from DDoS attacks.
-
-### 🧪 Real-Life Examples:
-
-- YouTube & Netflix → Fast video streaming via CDN
-- Amazon & Instagram → Quick image and asset loading
-- React, Bootstrap → Can be included via CDN links (no need to download manually)
-
----
-
-## 🔐 What is CORS (Cross-Origin Resource Sharing)?
-
-**CORS** is a **security feature in browsers** that controls how resources are shared across **different domains**.
-
-If your website is loading data or JavaScript from another server, **CORS ensures it’s safe and allowed**.
-
-### ✅ Why CORS is Needed:
-
-- Stops websites from making **unauthorized data requests** to other servers.
-- Makes sure **only trusted sources** can access or share data with your app.
-- Without CORS, modern browsers will **block the request** for safety.
-
+- Emmet is a shortcut tools which is used to write HTML & CSS
+- It allows user to generate full code faster using snippet or abbreviations.
